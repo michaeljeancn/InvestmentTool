@@ -1,0 +1,28 @@
+td, th {
+    border:blue solid 0.5px;
+}
+.center {
+    position: relative;
+    left: 38%;
+    margin-left:-50px;
+}
+body::-webkit-scrollbar{
+    width: 0 !important;
+}
+.link {
+    background: cadetblue;
+    height: 50px;
+    width: 200px;
+    display: -moz-inline-box;
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+}
+.aLink {
+    color: whitesmoke;
+    text-decoration: none;
+}
+.link:hover {
+    background: green;
+    color: wheat;
+}

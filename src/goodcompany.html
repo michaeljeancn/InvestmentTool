@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta content="text/html;charset=UTF-8"/>
+		<title>白马股组合</title>
+		<script>
+			window.$ = window.jQuery = require("./jquery.min");
+			$(document).ready(function() {
+				$.get('http://mm.leal.wang/stock/horse')
+				.done(function(stock) {
+					let tempHtml = $(stock).find('#table_horse').html();
+					$('#stockTable').html(tempHtml);
+                    let tempTotal = $('#stockTable tr').length - 1;
+					$('#total').text(`共${tempTotal}只`);
+					$('#stockTable td').each(function() {
+						let tempText = $(this).text();    
+						$(this).html(`<a href="http://www.iwencai.com/stockpick/search?tid=stockpick&qs=stockpick_diag&ts=1&w=${tempText}" target="_blank">${tempText}</a>`);
+					});
+					$('#stockTable').DataTable({
+						paging:false,
+						"order": []
+					});
+				})
+				.fail(function(err) {
+					console.log(err);
+					alert('获取数据失败，可能是网络问题，等等再重试？');
+				});
+			});
+		</script>
+		<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+		<link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet"/>
+		<link href="./custom.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div>
+            <p><span style="color: red">数据仅供参考，不构成投资建议。投资有风险，入市需谨慎</span></p>
+            <a href="./index.html" class="aLink"><span class="link">回到首页</span></a>
+		</div>
+		<div class="content">
+			<div>白马股组合: <span id="total" style="color: green; font-size: larger;"></span></div>
+			<div>
+				<table id="stockTable" class="display" style="text-align: center;">
+				</table>
+            </div>
+		</div>
+	</body>
+</html>
