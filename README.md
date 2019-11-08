@@ -22,6 +22,10 @@
 - [x] Automatically updater - support by Electron, thank you!
 
 ## Next Steps
+=======
+
+## Next Steps
+- [ ] Automatically updater - support by Electron, thank you!
 - [ ] Invest time and number recording
 - [ ] Reminder of invest time / date point
 - [ ] Automatically calculator of yield
