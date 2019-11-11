@@ -3,7 +3,7 @@ import { app, BrowserWindow, Menu } from 'electron';
 require('update-electron-app')({
   repo: 'michaeljeancn/InvestmentTool',
   updateInterval: '10 minutes',
-  notifyUser: 'true'
+  notifyUser: 'true',
 });
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.

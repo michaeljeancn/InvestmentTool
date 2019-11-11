@@ -1,7 +1,7 @@
 {
   "name": "investment_analysis",
   "productName": "投资辅助分析工具",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "description": "My Electron application description",
   "main": "src/index.js",
   "scripts": {

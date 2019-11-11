@@ -12,7 +12,7 @@ body::-webkit-scrollbar{
 .link {
     background: cadetblue;
     height: 50px;
-    width: 200px;
+    width: 180px;
     display: -moz-inline-box;
     display: inline-block;
     text-align: center;
