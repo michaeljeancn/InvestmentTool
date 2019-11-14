@@ -1,0 +1,66 @@
+[
+    {
+        "id": 0,
+        "type": "sample",
+        "records": [
+            {
+                "rid": 1,
+                "date": "2019-10-01",
+                "stockIndex": "中证500",
+                "fundCode": "510500",
+                "temperature": "9.0",
+                "buyinPrice": "5.000",
+                "selloutPrice": null,
+                "fundShares": "1000",
+                "buyinTotal": "5000.00",
+                "leftNumber": "0.00",
+                "comment": "初始值1"
+            },
+            {
+                "rid": 2,
+                "date": "2019-11-01",
+                "stockIndex": "中证500",
+                "fundCode": "510500",
+                "temperature": "9.0",
+                "buyinPrice": "5.000",
+                "selloutPrice": null,
+                "fundShares": "1000",
+                "buyinTotal": "5000.00",
+                "leftNumber": "0.00",
+                "comment": "初始值2"
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "type": "real",
+        "records": [
+            {
+                "rid": 1,
+                "date": "2019-10-01",
+                "stockIndex": "中证500",
+                "fundCode": "510500",
+                "temperature": "9.0",
+                "buyinPrice": "5.000",
+                "selloutPrice": null,
+                "fundShares": "1000",
+                "buyinTotal": "5000.00",
+                "leftNumber": "0.00",
+                "comment": "测试1"
+            },
+            {
+                "rid": 2,
+                "date": "2019-11-01",
+                "stockIndex": "中证500",
+                "fundCode": "510500",
+                "temperature": "9.0",
+                "buyinPrice": "5.000",
+                "selloutPrice": null,
+                "fundShares": "1000",
+                "buyinTotal": "5000.00",
+                "leftNumber": "0.00",
+                "comment": "测试2"
+            }
+        ]
+    }
+]

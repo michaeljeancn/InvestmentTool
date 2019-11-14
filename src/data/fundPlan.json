@@ -1,0 +1,18 @@
+[
+    {
+        "duration": "10",
+        "monthYear": "year",
+        "purpose": "1,000,000.00",
+        "currency": "CNY",
+        "monthlyNumber": "5000.00",
+        "remark": "初始值"
+    },
+    {
+        "duration": "5",
+        "monthYear": "year",
+        "purpose": "1,000,000.00",
+        "currency": "CNY",
+        "monthlyNumber": "5000.00",
+        "remark": "测试"
+    }
+]

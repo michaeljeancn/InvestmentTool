@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta content="text/html;charset=UTF-8"/>
+		<title>我的投资记录</title>
+		<script>
+			window.$ = window.jQuery = require("./jquery.min");
+			$(document).ready(function() {
+                $.getJSON('./data/investRecord.json')
+                .done(function(data) {
+                    let totalInvest = 0;
+                    $.each(data, function(x, obj) {
+                        totalInvest += Number(obj.invest);
+                        if (obj.type === 'fund') {
+                            $('#fundNumber').text(obj.invest);
+                        } else if (obj.type === 'cb') {
+                            $('#cbNumber').text(obj.invest);
+                        } else {
+                            $('#stockNumber').text(obj.invest);
+                        }
+                    });
+                    $('#totalNumber').text(totalInvest);
+                })
+                .fail(function(err) {
+                    console.log(err)
+                });
+			});
+		</script>
+		<link href="./custom.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div>
+            <p><span style="color: red">数据仅供参考，不构成投资建议。投资有风险，入市需谨慎</span></p>
+            <a href="./index.html" class="aLink"><span class="link">回到首页</span></a>
+            <a href="./data/fundinvest.html" class="aLink"><span class="link">宽基指数基金定投记录</span></a>
+            <a href="./data/cbinvest.html" class="aLink"><span class="link">可转债（新债）投资记录</span></a>
+            <a href="./data/stockinvest.html" class="aLink"><span class="link">股票投资记录</span></a>
+		</div>
+		<div class="content">
+			<div>目前已经投资: <span id="total" style="color: green; font-size: larger;"></span>元</div>
+			<div class="center">
+                <table id="totalTable" class="display" style="border-collapse: collapse; text-align: center;">
+                    <thead>
+                        <tr>
+                            <th>投资品</th>
+                            <th>投资额（元）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="./data/fundinvest.html">宽基指数基金</a></td>
+                            <td id="fundNumber">0.00</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./data/cbinvest.html">可转债</a></td>
+                            <td id="cbNumber">0.00</td>
+                        </tr>
+                        <tr>
+                            <td><a href="./data/stockinvest.html">股票</a></td>
+                            <td id="stockNumber">0.00</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>总计投资额</td>
+                            <td id="totalNumber">0.00</td>
+                        </tr>
+                    </tfoot>
+				</table>
+            </div>
+		</div>
+	</body>
+</html>

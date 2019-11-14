@@ -1,0 +1,20 @@
+[
+    {
+        "type": "fund",
+        "invest": "5000.00",
+        "currency": "CNY",
+        "benefit": null
+    },
+    {
+        "type": "cb",
+        "invest": "375.44",
+        "currency": "CNY",
+        "benefit": null
+    },
+    {
+        "type": "stock",
+        "invest": "1810.90",
+        "currency": "CNY",
+        "benefit": null
+    }
+]
