@@ -1,8 +1,8 @@
 {
   "name": "investment_analysis",
-  "productName": "投资辅助分析工具",
-  "version": "0.4.1",
-  "description": "My Electron application description",
+  "productName": "Investment Analysis Tool",
+  "version": "0.4.2",
+  "description": "An assistant investment analysis tool, made by Michael Zhang",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",

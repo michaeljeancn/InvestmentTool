@@ -26,3 +26,9 @@ body::-webkit-scrollbar{
     background: green;
     color: wheat;
 }
+.hide {
+    display: none;
+}
+.partTable {
+    width: 100%
+}
