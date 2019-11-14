@@ -1,0 +1,30 @@
+[
+    {
+        "temperature": "10",
+        "percentage": "100"
+    },
+    {
+        "temperature": "20",
+        "percentage": "80"
+    },
+    {
+        "temperature": "25",
+        "percentage": "60"
+    },
+    {
+        "temperature": "30",
+        "percentage": "50"
+    },
+    {
+        "temperature": "40",
+        "percentage": "0"
+    },
+    {
+        "temperature": "50",
+        "percentage": "-50"
+    },
+    {
+        "temperature": "100",
+        "percentage": "-100"
+    }
+]

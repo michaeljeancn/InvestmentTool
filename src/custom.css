@@ -18,6 +18,15 @@ body::-webkit-scrollbar{
     text-align: center;
     line-height: 50px;
 }
+.button {
+    background: grey;
+    height: 30px;
+    width: 100px;
+    display: -moz-inline-box;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+}
 .aLink {
     color: whitesmoke;
     text-decoration: none;
@@ -26,9 +35,17 @@ body::-webkit-scrollbar{
     background: green;
     color: wheat;
 }
+.button:hover {
+    background: burlywood;
+    color: black;
+}
 .hide {
     display: none;
 }
 .partTable {
     width: 100%
+}
+.headButtons {
+    position: relative;
+    
 }

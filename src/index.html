@@ -6,9 +6,10 @@
 		<script>
 			window.$ = window.jQuery = require("./jquery.min");
 			$(document).ready(function() {
-				$.when($.get('http://mm.leal.wang/rate/market'),$.get('http://mm.leal.wang/stock/entrance'))
-				.done(function(rate,opportunity) {
+				$.when($.get('http://mm.leal.wang/rate/market'),$.get('http://mm.leal.wang/stock/entrance'),$.get('https://www.jisilu.cn/data/cbnew/cb_index_quote/'))
+				.done(function(rate,opportunity,rst) {
 					$('#rate').text($(rate[0]).find('strong').text());
+					$('#cbAvg').text(`${rst[0].avg_price} 元`);
 					let tempHtml = $(opportunity[0]).find('#table').html();
 					$('#stockTable').html(tempHtml);
 					$('#stockTable th').each(function() {
@@ -32,13 +33,17 @@
 			<a href="./cb.html" class="aLink"><span class="link">查看可转债组合</span></a>
 			<a href="./goodcompany.html" class="aLink"><span class="link">查看白马股组合</span></a>
 			<a href="./cheapstock.html" class="aLink"><span class="link">查看便宜组合</span></a>
-			<a href="./mineRecords.html" class="aLink"><span class="link">我的投资记录</span></a>
+			<!--<a href="./mineRecords.html" class="aLink"><span class="link">我的投资记录</span></a>-->
 			<a href="./about.html" class="aLink"><span class="link">关于本软件</span></a>
 		</div>
 		<div class="content">
 			<div>十年期国债收益率</div>
 			<div style="text-align: center">
 				<span style="font-size:50px"><strong id="rate"></strong></span>
+			</div>
+			<div>市场可转债均价</div>
+			<div style="text-align: center">
+				<span style="font-size:50px"><strong id="cbAvg"></strong></span>
 			</div>
 			<div>股票入场时机: <span id="oppTrue" style="font-size: larger; color: red;">不可以入场</span></div>
 			<div class="center">

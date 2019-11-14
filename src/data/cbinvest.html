@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta content="text/html;charset=UTF-8"/>
+		<title>我的投资记录</title>
+		<script>
+            window.$ = window.jQuery = require("../jquery.min");
+            const fs = require('fs');
+            let planTable, recordsTable;
+			$(document).ready(function() {
+                fs.readFile('./src/data/fundPlan.json', function(err, data) {
+                    if (err) throw err;
+                    let plans = JSON.parse(data);
+                    let myMonthYear;
+                    $('#editPlan').hide();
+                    $.each(plans, function(x, arr) {
+                        myMonthYear = (arr.monthYear === 'year') ? '年' : '月';
+                        $('#planTable tbody').append(`<tr>
+                                <td>${x}</td>
+                                <td>${arr.title}</td>
+                                <td class="hide">${arr.duration} ${myMonthYear}</td>
+                                <td class="hide">${arr.purpose}</td>
+                                <td class="hide">${arr.monthlyNumber}</td>
+                                <td class="hide">${arr.remark}</td>
+                            </tr>`);
+                    });
+                    planTable = $('#planTable').DataTable({
+						language: {
+							"sProcessing": "处理中...",
+							"sLengthMenu": "显示 _MENU_ 项",
+							"sZeroRecords": "没有匹配结果",
+							"sInfo": "第 _START_ 至 _END_ 项，共 _TOTAL_ 项",
+							"sInfoEmpty": "第 0 至 0 项结果，共 0 项",
+							"sInfoFiltered": "(由 _MAX_ 项过滤)",
+							"sInfoPostFix": "",
+							"sSearch": "搜索:",
+							"sUrl": "",
+							"sEmptyTable": "表中数据为空",
+							"sLoadingRecords": "载入中...",
+							"sInfoThousands": ",",
+							"oPaginate": {
+								"sFirst": "首页",
+								"sPrevious": "上页",
+								"sNext": "下页",
+								"sLast": "末页"
+							},
+							"oAria": {
+								"sSortAscending": ": 以升序排列此列",
+								"sSortDescending": ": 以降序排列此列"
+							}
+						},
+                        select: 'single'
+                    });
+                    planTable.on('select', function(e, dt, type, indexes) {
+                        if (type === 'row') {
+                            let dataRow = planTable.rows(indexes).data()[0];
+                            $.each(dataRow, function(x, value) {
+                                $(`#planDetails td span:eq(${x})`).text(value);
+                            });
+                            $('#planDetails').show();
+                            $('#headButtons').show();
+                            $('#addPlan').show();
+                            $('#editPlan').show();
+                            $('.planData').hide();
+                            $('.info').show();
+                            $('.footButtons').hide();
+                        }
+                    });
+                });
+                $('#addPlan').click(function() {
+                    $('#planDetails').show();
+                    $('.info').hide();
+                    $('.planData').show();
+                    $('#headButtons').hide();
+                    $('.footButtons').show();
+                });
+                $('#editPlan').click(function() {
+                    $('#planDetails').show();
+                    $('.info').hide();
+                    $('.planData').show();
+                    $('#headButtons').hide();
+                    $('.footButtons').show();
+                });
+                $('#quitPlan').click(function() {
+                    $('#planDetails').hide();
+                    $('#headButtons').show();
+                    $('#editPlan').hide();
+                });
+            });
+		</script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+        <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet"/>
+        <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css" rel="stylesheet" />
+        <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
+		<link href="../custom.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div>
+            <p><span style="color: red">数据仅供参考，不构成投资建议。投资有风险，入市需谨慎</span></p>
+            <a href="../index.html" class="aLink"><span class="link">回到首页</span></a>
+            <a href="../mineRecords.html" class="aLink"><span class="link">总投资记录</span></a>
+            <a href="./cbinvest.html" class="aLink"><span class="link">可转债投资记录</span></a>
+            <a href="./stockinvest.html" class="aLink"><span class="link">股票投资记录</span></a>
+		</div>
+		<div class="content">
+            <div>目前已经投资: <span id="total" style="color: green; font-size: larger;"></span></div>
+            <table class="partTable">
+                <tbody>
+                    <tr>
+                        <td style="width:35%">
+                            <div>
+                                <table id="planTable">
+                                    <thead>
+                                        <th>编号</th>
+                                        <th>名称</th>
+                                        <th class="hide">定投时长</th>
+                                        <th class="hide">目标金额（元）</th>
+                                        <th class="hide">初始定投金额（元）</th>
+                                        <th class="hide">备注</th>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </td>
+                        <td style="width:65%">
+                            <div class="headButtons">
+                                <a href="#" class="aLink" id="addPlan"><span class="button">新建</span></a>
+                                <a href="#" class="aLink" id="editPlan"><span class="button">编辑</span></a>
+                            </div>
+                            <div id="planDetails" class="hide">
+                                <table style="border-collapse: collapse; text-align: center; width: 100%; height: 100%;">
+                                    <tbody>
+                                        <tr class="hide">
+                                            <th>编号</th>
+                                            <td><span></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>名称</th>
+                                            <td><span></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>定投时长</th>
+                                            <td><span class="info"></span><input type="text" class="planData hide" />
+                                                <select class="planData hide">
+                                                    <option selected="selected" value="year">年</option>
+                                                    <option value="month">月</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>目标金额（元）</th>
+                                            <td><span class="info"></span><input type="number" class="planData hide" /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>初始定投金额（元）</th>
+                                            <td><span class="info"></span><input type="number" class="planData hide" /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>备注</th>
+                                            <td><span class="info"></span><input type="text" class="planData hide" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="footButtons">
+                                    <a href="#" class="aLink" id="savePlan"><span class="button">保存</span></a>
+                                    <a href="#" class="aLink" id="quitPlan"><span class="button">退出编辑</span></a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+		</div>
+	</body>
+</html>
