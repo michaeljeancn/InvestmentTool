@@ -1,9 +1,6 @@
 [
     {
-<<<<<<< HEAD
         "title": "测试用计划1",
-=======
->>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
         "duration": "10",
         "monthYear": "year",
         "purpose": "1,000,000.00",
@@ -12,10 +9,7 @@
         "remark": "初始值"
     },
     {
-<<<<<<< HEAD
         "title": "测试用计划2",
-=======
->>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
         "duration": "5",
         "monthYear": "year",
         "purpose": "1,000,000.00",

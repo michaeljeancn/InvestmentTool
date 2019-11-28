@@ -5,7 +5,6 @@
 		<title>我的投资记录</title>
 		<script>
             window.$ = window.jQuery = require("../jquery.min");
-<<<<<<< HEAD
             const fs = require('fs');
             const numeral = require('numeral');
             let planTable, recordsTable, myJsonPath, planTitle;
@@ -29,40 +28,17 @@
                                 <td class="hide">${arr.duration} ${myMonthYear}</td>
                                 <td class="hide">${arr.purpose}</td>
                                 <td class="hide">${tempNumber}</td>
-=======
-            let planTable, recordsTable;
-			$(document).ready(function() {
-                $.getJSON('./fundPlan.json')
-                .done(function(data) {
-                    let myMonthYear;
-                    $('#editPlan').hide();
-                    $.each(data, function(x, arr) {
-                        myMonthYear = (arr.monthYear === 'year') ? '年' : '月';
-                        $('#planTable tbody').append(`<tr>
-                                <td>${x}</td>
-                                <td>${arr.duration} ${myMonthYear}</td>
-                                <td>${arr.purpose}</td>
-                                <td class="hide">${arr.monthlyNumber}</td>
->>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                                 <td class="hide">${arr.remark}</td>
                             </tr>`);
                     });
                     planTable = $('#planTable').DataTable({
 						language: {
 							"sProcessing": "处理中...",
-<<<<<<< HEAD
 							"sLengthMenu": "显示 _MENU_ 项",
 							"sZeroRecords": "没有匹配结果",
 							"sInfo": "第 _START_ 至 _END_ 项，共 _TOTAL_ 项",
 							"sInfoEmpty": "第 0 至 0 项结果，共 0 项",
 							"sInfoFiltered": "(由 _MAX_ 项过滤)",
-=======
-							"sLengthMenu": "显示 _MENU_ 项结果",
-							"sZeroRecords": "没有匹配结果",
-							"sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-							"sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-							"sInfoFiltered": "(由 _MAX_ 项结果过滤)",
->>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
 							"sInfoPostFix": "",
 							"sSearch": "搜索:",
 							"sUrl": "",
@@ -76,13 +52,8 @@
 								"sLast": "末页"
 							},
 							"oAria": {
-<<<<<<< HEAD
 								"sSortAscending": ": 以升序排列",
 								"sSortDescending": ": 以降序排列"
-=======
-								"sSortAscending": ": 以升序排列此列",
-								"sSortDescending": ": 以降序排列此列"
->>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
 							}
 						},
                         select: 'single'
@@ -90,10 +61,7 @@
                     planTable.on('select', function(e, dt, type, indexes) {
                         if (type === 'row') {
                             let dataRow = planTable.rows(indexes).data()[0];
-<<<<<<< HEAD
                             planTitle = dataRow[1];
-=======
->>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                             $.each(dataRow, function(x, value) {
                                 $(`#planDetails td span:eq(${x})`).text(value);
                             });
@@ -104,7 +72,6 @@
                             $('.planData').hide();
                             $('.info').show();
                             $('.footButtons').hide();
-<<<<<<< HEAD
                             fs.readFile(`${myJsonPath}fundRecord.json`, function(err, data) {
                                 if (err) throw err;
                                 let loadRecords = JSON.parse(data);
@@ -160,8 +127,6 @@
                                     select: 'single'
                                 });
                             });
-=======
->>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                         }
                     });
                 });

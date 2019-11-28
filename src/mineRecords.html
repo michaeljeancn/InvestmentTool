@@ -4,7 +4,6 @@
     	<meta content="text/html;charset=UTF-8"/>
 		<title>我的投资记录</title>
 		<script>
-<<<<<<< HEAD
             window.$ = window.jQuery = require("./jquery.min");
             const fs = require('fs');
             const numeral = require('numeral');
@@ -31,27 +30,6 @@
                     });
                     $('#totalNumber').text(numeral(totalInvest).format('0,0.00'));
                     $('#total').text(numeral(totalInvest).format('0,0.00'));
-=======
-			window.$ = window.jQuery = require("./jquery.min");
-			$(document).ready(function() {
-                $.getJSON('./data/investRecord.json')
-                .done(function(data) {
-                    let totalInvest = 0;
-                    $.each(data, function(x, obj) {
-                        totalInvest += Number(obj.invest);
-                        if (obj.type === 'fund') {
-                            $('#fundNumber').text(obj.invest);
-                        } else if (obj.type === 'cb') {
-                            $('#cbNumber').text(obj.invest);
-                        } else {
-                            $('#stockNumber').text(obj.invest);
-                        }
-                    });
-                    $('#totalNumber').text(totalInvest);
-                })
-                .fail(function(err) {
-                    console.log(err)
->>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                 });
 			});
 		</script>
