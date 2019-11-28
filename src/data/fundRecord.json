@@ -1,8 +1,16 @@
 [
     {
+<<<<<<< HEAD
         "title": "测试用计划1",
         "records": [
             {
+=======
+        "id": 0,
+        "type": "sample",
+        "records": [
+            {
+                "rid": 1,
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                 "date": "2019-10-01",
                 "stockIndex": "中证500",
                 "fundCode": "510500",
@@ -15,6 +23,10 @@
                 "comment": "初始值1"
             },
             {
+<<<<<<< HEAD
+=======
+                "rid": 2,
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                 "date": "2019-11-01",
                 "stockIndex": "中证500",
                 "fundCode": "510500",
@@ -29,9 +41,17 @@
         ]
     },
     {
+<<<<<<< HEAD
         "title": "测试用计划2",
         "records": [
             {
+=======
+        "id": 1,
+        "type": "real",
+        "records": [
+            {
+                "rid": 1,
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                 "date": "2019-10-01",
                 "stockIndex": "中证500",
                 "fundCode": "510500",
@@ -44,6 +64,10 @@
                 "comment": "测试1"
             },
             {
+<<<<<<< HEAD
+=======
+                "rid": 2,
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                 "date": "2019-11-01",
                 "stockIndex": "中证500",
                 "fundCode": "510500",

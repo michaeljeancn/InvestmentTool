@@ -5,6 +5,7 @@
 		<title>我的投资记录</title>
 		<script>
             window.$ = window.jQuery = require("../jquery.min");
+<<<<<<< HEAD
             const fs = require('fs');
             const numeral = require('numeral');
             let planTable, recordsTable, myJsonPath, planTitle;
@@ -28,17 +29,40 @@
                                 <td class="hide">${arr.duration} ${myMonthYear}</td>
                                 <td class="hide">${arr.purpose}</td>
                                 <td class="hide">${tempNumber}</td>
+=======
+            let planTable, recordsTable;
+			$(document).ready(function() {
+                $.getJSON('./fundPlan.json')
+                .done(function(data) {
+                    let myMonthYear;
+                    $('#editPlan').hide();
+                    $.each(data, function(x, arr) {
+                        myMonthYear = (arr.monthYear === 'year') ? '年' : '月';
+                        $('#planTable tbody').append(`<tr>
+                                <td>${x}</td>
+                                <td>${arr.duration} ${myMonthYear}</td>
+                                <td>${arr.purpose}</td>
+                                <td class="hide">${arr.monthlyNumber}</td>
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                                 <td class="hide">${arr.remark}</td>
                             </tr>`);
                     });
                     planTable = $('#planTable').DataTable({
 						language: {
 							"sProcessing": "处理中...",
+<<<<<<< HEAD
 							"sLengthMenu": "显示 _MENU_ 项",
 							"sZeroRecords": "没有匹配结果",
 							"sInfo": "第 _START_ 至 _END_ 项，共 _TOTAL_ 项",
 							"sInfoEmpty": "第 0 至 0 项结果，共 0 项",
 							"sInfoFiltered": "(由 _MAX_ 项过滤)",
+=======
+							"sLengthMenu": "显示 _MENU_ 项结果",
+							"sZeroRecords": "没有匹配结果",
+							"sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+							"sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+							"sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
 							"sInfoPostFix": "",
 							"sSearch": "搜索:",
 							"sUrl": "",
@@ -52,8 +76,13 @@
 								"sLast": "末页"
 							},
 							"oAria": {
+<<<<<<< HEAD
 								"sSortAscending": ": 以升序排列",
 								"sSortDescending": ": 以降序排列"
+=======
+								"sSortAscending": ": 以升序排列此列",
+								"sSortDescending": ": 以降序排列此列"
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
 							}
 						},
                         select: 'single'
@@ -61,7 +90,10 @@
                     planTable.on('select', function(e, dt, type, indexes) {
                         if (type === 'row') {
                             let dataRow = planTable.rows(indexes).data()[0];
+<<<<<<< HEAD
                             planTitle = dataRow[1];
+=======
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                             $.each(dataRow, function(x, value) {
                                 $(`#planDetails td span:eq(${x})`).text(value);
                             });
@@ -72,6 +104,7 @@
                             $('.planData').hide();
                             $('.info').show();
                             $('.footButtons').hide();
+<<<<<<< HEAD
                             fs.readFile(`${myJsonPath}fundRecord.json`, function(err, data) {
                                 if (err) throw err;
                                 let loadRecords = JSON.parse(data);
@@ -127,6 +160,8 @@
                                     select: 'single'
                                 });
                             });
+=======
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                         }
                     });
                 });
@@ -172,14 +207,23 @@
             <table class="partTable">
                 <tbody>
                     <tr>
+<<<<<<< HEAD
                         <td style="width:35%">
+=======
+                        <td style="width:50%">
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                             <div>
                                 <table id="planTable">
                                     <thead>
                                         <th>编号</th>
+<<<<<<< HEAD
                                         <th>名称</th>
                                         <th class="hide">定投时长</th>
                                         <th class="hide">目标金额（元）</th>
+=======
+                                        <th>定投时长</th>
+                                        <th>目标金额（元）</th>
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                                         <th class="hide">初始定投金额（元）</th>
                                         <th class="hide">备注</th>
                                     </thead>
@@ -187,10 +231,17 @@
                                 </table>
                             </div>
                         </td>
+<<<<<<< HEAD
                         <td style="width:65%">
                             <div class="headButtons">
                                 <a href="#" class="aLink" id="addPlan"><span class="button">新建</span></a>
                                 <a href="#" class="aLink" id="editPlan"><span class="button">编辑</span></a>
+=======
+                        <td style="width:50%">
+                            <div class="headButtons">
+                                <a href="#" class="aLink" id="addPlan"><span class="link">新建</span></a>
+                                <a href="#" class="aLink" id="editPlan"><span class="link">编辑</span></a>
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                             </div>
                             <div id="planDetails" class="hide">
                                 <table style="border-collapse: collapse; text-align: center; width: 100%; height: 100%;">
@@ -200,10 +251,13 @@
                                             <td><span></span></td>
                                         </tr>
                                         <tr>
+<<<<<<< HEAD
                                             <th>名称</th>
                                             <td><span></span></td>
                                         </tr>
                                         <tr>
+=======
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                                             <th>定投时长</th>
                                             <td><span class="info"></span><input type="text" class="planData hide" />
                                                 <select class="planData hide">
@@ -227,12 +281,18 @@
                                     </tbody>
                                 </table>
                                 <div class="footButtons">
+<<<<<<< HEAD
                                     <a href="#" class="aLink" id="savePlan"><span class="button">保存</span></a>
                                     <a href="#" class="aLink" id="quitPlan"><span class="button">退出编辑</span></a>
+=======
+                                    <a href="#" class="aLink" id="savePlan"><span class="link">保存</span></a>
+                                    <a href="#" class="aLink" id="quitPlan"><span class="link">退出编辑</span></a>
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                                 </div>
                             </div>
                         </td>
                     </tr>
+<<<<<<< HEAD
                     <tr id="recordsTable" class="hide">
                         <div class="headButtons">
                             <a href="#" class="aLink" id="addRecord"><span class="button">新建</span></a>
@@ -260,6 +320,8 @@
                             <a href="#" class="aLink" id="quitRecord"><span class="button">退出编辑</span></a>
                         </div>
                     </tr>
+=======
+>>>>>>> f78ea2c3f74b12792043e607f1417bb9c1e8d677
                 </tbody>
             </table>
 		</div>
