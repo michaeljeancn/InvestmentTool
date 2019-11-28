@@ -36,7 +36,7 @@
 - [ ] 更多，待增加……
 
 ## 去除
-- [x] -自动升级特性，由Electron自带，感谢如此强大的工具！- 暂时去除了自动升级功能，因为没有适用的签名证书，抱歉！
+- [x] 暂时去除了自动升级功能，因为没有适用的签名证书，抱歉！
 
 -------------------------------------------------------------------------------------------------------------
 # English Version
@@ -45,7 +45,7 @@
 - This is the Investment Analysis Tool to help you to improve investment decision.
 
 ## Version
-- Current version is: 0.4.1
+- Current version is: 0.4.9
 >- Not a release ready version yet.
 >- ! Only support Chinese for current version
 
@@ -76,4 +76,4 @@
 - [ ] etc...
 
 ## Removed Functions
-- [x] -Automatically updater - support by Electron, thank you!- Remove the Auto-update feature temporarily due to I cannot get a valid code-signing certificate yet, sorry for that!
+- [x] Removed the Auto-update feature temporarily due to I cannot get a valid code-signing certificate yet, sorry for that!
