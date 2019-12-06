@@ -4,7 +4,7 @@
 - 该工具是可以辅助您进行投资分析的小工具。
 
 ## 版本
-- 目前版本为：0.4.1
+- 目前版本为：0.5.0
 >- 该版本并不是正式版。
 >- ! 目前仅支持简体中文。
 
@@ -19,13 +19,16 @@
 >- [Electron](https://github.com/electron/electron)
 >- [jQuery](https://jquery.com)
 >- [DataTable](https://datatable.org)
+>- [numeral](http://numeraljs.com/)
 
 ## 当前功能
 - [x] 分析并确认当前是否入市的好时机
 - [x] 自动筛选出可转债组合，白马股组合以及便宜组合
 - [x] 在已筛选组合表中，仍然可以二次筛选和排序，感谢DataTable
 - [x] 通过不同背景颜色，快速区分类型
-- [x] 自动升级特性，由Electron自带，感谢如此强大的工具！
+- [x] 增加了可转债平均市价，以及跳转到富投网的链接
+- [x] 增加了中证全指温度
+
 
 ## 下一步
 - [ ] 投资时间和金额记录
@@ -33,6 +36,8 @@
 - [ ] 自动计算收益率
 - [ ] 更多，待增加……
 
+## 去除
+- [x] 暂时去除了自动升级功能，因为没有适用的签名证书，抱歉！
 
 -------------------------------------------------------------------------------------------------------------
 # English Version
@@ -41,7 +46,7 @@
 - This is the Investment Analysis Tool to help you to improve investment decision.
 
 ## Version
-- Current version is: 0.4.1
+- Current version is: 0.5.0
 >- Not a release ready version yet.
 >- ! Only support Chinese for current version
 
@@ -56,16 +61,21 @@
 >- [Electron](https://github.com/electron/electron)
 >- [jQuery](https://jquery.com)
 >- [DataTable](https://datatable.org)
+>- [numeral](http://numeraljs.com/)
 
 ## Current Functions
 - [x] Analysis and confirm if the correct time entrance into stock market is now
 - [x] Automatically filter the list of Convertable Bonds, stocks of good companies and cheap enough to buy in
 - [x] Support filter and ordering inside tables, thanks for DataTable
 - [x] Quickly notice the differences base on differnt background color
-- [x] Automatically updater - support by Electron, thank you!
+- [x] Added CB average price, and the redirect link to [richvest.com](http://www.richvest.com/)
+- [x] Added long term investment temporature of CSI All Share Index
 
 ## Next Steps
 - [ ] Invest time and number recording
 - [ ] Reminder of invest time / date point
 - [ ] Automatically calculator of yield
 - [ ] etc...
+
+## Removed Functions
+- [x] Removed the Auto-update feature temporarily due to I cannot get a valid code-signing certificate yet, sorry for that!
