@@ -6,7 +6,15 @@
 		<script>
 			window.$ = window.jQuery = require("./jquery.min");
 			let now = new Date();
-			let tempDate = now.setDate(now.getDate() - 1);
+			let tempDate;
+			if (now.getDay() === 0) {
+				tempDate = now.setDate(now.getDate() - 2);
+			} else if (now.getDay() === 1) {
+				tempDate = now.setDate(now.getDate() - 3);
+			} else {
+				tempDate = now.setDate(now.getDate() - 1);
+			}
+			
 			let today = new Date(tempDate).toISOString().slice(0, 10);
 			let queryJSON = {
 				"token": "be18d1af-e53e-44ec-a342-73e6fbed94c6",
