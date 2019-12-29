@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta content="text/html;charset=UTF-8"/>
+		<title>个股图表</title>
+		<script>
+			window.$ = window.jQuery = require("./jquery.min");
+			const low = require('lowdb');
+			const fileSync = require('lowdb/adapters/FileSync');
+			const adapter = new fileSync('stock.json');
+			const db = low(adapter);
+			let tempList = db.get('testList')
+							.filter(function(o) {
+								return !o.delistingDate;
+							})
+							.value();
+
+			$(document).ready(function() {
+				/** 
+				 * 输入股票代码时，满4位即自动搜索；
+				 * 输入股票名称时，2个字即自动搜索
+				 * Automatically retrieve data and search if input pure number and length >= 4; or if input pure Chinese characters and length >= 2
+				*/
+				$('#quickSearch').autocomplete({
+					minLength: 2,
+					source: tempList,
+					/*search: function() {
+						const term = extractLast(this.value);
+						console.log(term);
+						const num = /^\+?[1-9][0-9]*$/;	//判断是否为正整数 Confirm if possitive integer
+						const zh = /^[\u4e00-\u9fa5]/;	//判断至少一个汉字 Confirm if at least have 1 Chinese character
+						if ((num.test(term) && term.length < 4) || (zh.test(term && term.length < 2))) {
+							return false;
+						}
+					},*/
+					focus: function(event, ui) {
+						$('#quickSearch').val(ui.item.name);
+						return false;
+					},
+					select: function(event, ui) {
+						$('#quickSearch').val(ui.item.name);
+						return false;
+					}
+				})
+				.autocomplete('instance')._renderItem = function(ul, item) {
+					return $('<li>')
+						.append(`<a>${item.stockCode}<br />${item.name}</a>`)
+						.appendTo(ul);
+				};
+			});
+		</script>
+		<script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.src.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" />
+		<link href="./custom.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div>
+            <p><span style="color: red">数据仅供参考，不构成投资建议。投资有风险，入市需谨慎</span></p>
+            <a href="./index.html" class="aLink"><span class="link">回到首页</span></a>
+			<a href="./goodcompany.html" class="aLink"><span class="link">查看白马股组合</span></a>
+			<a href="./cheapstock.html" class="aLink"><span class="link">查看便宜组合</span></a>
+			<a href="./security.html" class="aLink"><span class="link">查看券商股</span></a>
+		</div>
+		<div class="content">
+			<div>查找股票：<input id="quickSearch" type="search" placeholder="股票代码或名称" value="" /></div>
+			<div>
+				<table id="stockTable" class="display" style="text-align: center;">
+				</table>
+            </div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta content="text/html;charset=UTF-8"/>
+		<title>行业指数（博格公式）</title>
+		<script>
+			window.$ = window.jQuery = require("./jquery.min");
+			$(document).ready(function() {
+                let tempTotal = $('#stockTable tr').length - 1;
+                $('#total').text(`共${tempTotal}只`);
+                $('#stockTable tbody tr').each(function() {
+                    let tempCode = $(this).find('td:first').text();
+                    let tempName = $(this).find('td:eq(1)').text();
+                    let tempFund1 = $(this).find('td:eq(2)').text();
+                    let tempFund2 = $(this).find('td:eq(3)').text();
+                    $(this).find('td:first').html(`<a href="http://www.csindex.com.cn/zh-CN/indices/index-detail/${tempCode}" target="_blank">${tempCode}</a>`);
+                    $(this).find('td:eq(1)').html(`<a href="http://www.csindex.com.cn/zh-CN/indices/index-detail/${tempCode}" target="_blank">${tempName}</a>`);
+                    if (tempFund1) {$(this).find('td:eq(2)').html(`<a href="http://fund.eastmoney.com/${tempFund1}.html" target="_blank">${tempFund1}</a>`)};
+                    if (tempFund2) {$(this).find('td:eq(3)').html(`<a href="http://fund.eastmoney.com/${tempFund2}.html" target="_blank">${tempFund2}</a>`)};
+                    $(this).find('td:last').html(`<a href="#" onclick="popupDetails('${tempCode}')">查看博格公式</a>`);
+                });
+                $('#stockTable').DataTable({
+                    paging: false,
+                    language: {
+                        "sProcessing": "处理中...",
+                        "sLengthMenu": "显示 _MENU_ 项",
+                        "sZeroRecords": "没有匹配结果",
+                        "sInfo": "显示第 _START_ 至 _END_ 项，共 _TOTAL_ 项",
+                        "sInfoEmpty": "显示第 0 至 0 项，共 0 项",
+                        "sInfoFiltered": "(由 _MAX_ 项过滤)",
+                        "sInfoPostFix": "",
+                        "sSearch": "搜索:",
+                        "sUrl": "",
+                        "sEmptyTable": "表中数据为空",
+                        "sLoadingRecords": "载入中...",
+                        "sInfoThousands": ",",
+                        "oPaginate": {
+                            "sFirst": "首页",
+                            "sPrevious": "上页",
+                            "sNext": "下页",
+                            "sLast": "末页"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": 以升序排列此列",
+                            "sSortDescending": ": 以降序排列此列"
+                        }
+                    },
+                    "order": []
+                });
+            });
+            
+            function popupDetails(index) {
+                $.get(`http://mm.leal.wang/indices/bogle?stockCode=${index}`)
+                .done(function(data) {
+                    let myDiv = $(data).find('div:eq(2)');
+                    myDiv.each(function(x, y) {
+                        if (x ===1) {
+                            $('#detailIndex').html(y.innerHTML);
+                        }
+                    });
+                    $('#bogleResult').html($(data).find('#table').html());
+                    $('#details').dialog({
+                        modal: true,
+                        hight: 500,
+                        width: 600,
+                        buttons: {
+                            OK: function() {
+                            $( this ).dialog( "close" );
+                            }
+                        }
+                    });
+                })
+                .fail(function(err) {
+					console.log(err);
+					alert('获取数据失败，可能是网络问题，等等再重试？');
+				});
+            }
+		</script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet"/>
+        <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" />
+		<link href="./custom.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div>
+			<p><span style="color: red">数据仅供参考，不构成投资建议。投资有风险，入市需谨慎</span></p>
+			<a href="./index.html" class="aLink"><span class="link">回到首页</span></a>
+		</div>
+		<div class="content">
+			<div>行业指数（消费和医药）: <span id="total" style="color: green; font-size: larger;"></span></div>
+			<div>
+                <table id="stockTable" class="display" style="text-align: center;">
+                    <thead>
+                        <tr>
+                            <th>指数代码</th>
+                            <th>指数名称</th>
+                            <th>场内基金</th>
+                            <th>场外基金</th>
+                            <th>博格公式</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>000036</td>
+                            <td>上证消费</td>
+                            <td>510630</td>
+                            <td>-</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>000932</td>
+                            <td>中证消费</td>
+                            <td>159928</td>
+                            <td>000248</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>000990</td>
+                            <td>全指消费</td>
+                            <td>159946</td>
+                            <td>-</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>000037</td>
+                            <td>上证医药</td>
+                            <td>510660</td>
+                            <td>-</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>000857</td>
+                            <td>500医药</td>
+                            <td>512300</td>
+                            <td>-</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>000913</td>
+                            <td>300医药</td>
+                            <td>512010</td>
+                            <td>-</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>000933</td>
+                            <td>中证医药</td>
+                            <td>159929</td>
+                            <td>-</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>000978</td>
+                            <td>医药100</td>
+                            <td>-</td>
+                            <td>001550</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>000991</td>
+                            <td>全指医药</td>
+                            <td>159938</td>
+                            <td>001180</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+				</table>
+            </div>
+            <div id="details">
+                <div id="detailIndex"></div>
+                <table id="bogleResult" style="border-collapse: collapse; text-align: center;"></table>
+            </div>
+		</div>
+	</body>
+</html>

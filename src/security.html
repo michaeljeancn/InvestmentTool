@@ -2,22 +2,27 @@
 <html lang="en">
 	<head>
     	<meta content="text/html;charset=UTF-8"/>
-		<title>白马股组合</title>
+		<title>券商股</title>
 		<script>
 			window.$ = window.jQuery = require("./jquery.min");
 			$(document).ready(function() {
-				$.get('http://mm.leal.wang/stock/horse')
+				$.get('http://mm.leal.wang/stock/security')
 				.done(function(stock) {
 					let tempHtml = $(stock).find('#table').html();
-					$('#stockTable').html(tempHtml);
+                    $('#stockTable').html(tempHtml);
+                    $('#stockTable tr').each(function() {
+						let myNum = Number($(this).find('th:eq(1)').text());
+						if (myNum > 10) {
+							$(this).css('background', 'yellow');
+						}
+					});
                     let tempTotal = $('#stockTable tr').length - 1;
 					$('#total').text(`共${tempTotal}只`);
 					$('#stockTable td').each(function() {
-						let tempText = $(this).text();    
+						let tempText = $(this).text();
 						$(this).html(`<a href="http://www.iwencai.com/stockpick/search?tid=stockpick&qs=stockpick_diag&ts=1&w=${tempText}" target="_blank">${tempText}</a>`);
 					});
 					$('#stockTable').DataTable({
-						paging:false,
 						language: {
 							"sProcessing": "处理中...",
 							"sLengthMenu": "显示 _MENU_ 项",
@@ -61,7 +66,8 @@
             <a href="./stockChart.html" class="aLink"><span class="link">回到股票页面</span></a>
 		</div>
 		<div class="content">
-			<div>白马股组合: <span id="total" style="color: green; font-size: larger;"></span></div>
+            <div>券商股: <span id="total" style="color: green; font-size: larger;"></span></div>
+            <div>PB分位点大于10%的将标为黄色列在后方</div>
 			<div>
 				<table id="stockTable" class="display" style="text-align: center;">
 				</table>

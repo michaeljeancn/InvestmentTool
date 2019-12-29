@@ -5,37 +5,21 @@
 		<title>投资辅助分析工具</title>
 		<script>
 			window.$ = window.jQuery = require("./jquery.min");
-			let now = new Date();
-			let tempDate;
-			if (now.getDay() === 0) {
-				tempDate = now.setDate(now.getDate() - 2);
-			} else if (now.getDay() === 1) {
-				tempDate = now.setDate(now.getDate() - 3);
-			} else {
-				tempDate = now.setDate(now.getDate() - 1);
-			}
 			
-			let today = new Date(tempDate).toISOString().slice(0, 10);
-			let queryJSON = {
-				"token": "be18d1af-e53e-44ec-a342-73e6fbed94c6",
-				"date": today,
-				"stockCodes": [
-					"1000002"
-				],
-				"metrics": [
-					"pe_ttm.y_10.weightedAvg",
-					"pb.y_10.weightedAvg"
-				]
-			}
 			$(document).ready(function() {
-				$.when($.get('http://mm.leal.wang/rate/market'), $.get('http://mm.leal.wang/stock/entrance'), $.get('https://www.jisilu.cn/data/cbnew/cb_index_quote/'), $.post('https://open.lixinger.com/api/a/indice/fundamental', queryJSON))
+				$.when($.get('http://mm.leal.wang/rate/market'), $.get('http://mm.leal.wang/stock/entrance'), $.get('https://www.jisilu.cn/data/cbnew/cb_index_quote/'), $.get('http://mm.leal.wang/indices/broad'))
 				.done(function(rate, opportunity, rst, indexData) {
 					$('#rate').text($(rate[0]).find('strong').text());
 					$('#cbAvg').text(`${rst[0].avg_price} 元`);
-					let indexPEPos = indexData[0].data[0].pe_ttm.y_10.weightedAvg.latestValPos;
-					let indexPBPos = indexData[0].data[0].pb.y_10.weightedAvg.latestValPos;
-					let longTermTemp = ((indexPEPos + indexPBPos) / 2 * 100).toFixed(2);
-					$('#indexTemp').text(`${longTermTemp}`);
+					let longTermTemp = $(indexData[0]).find('#table');
+					longTermTemp.find('tr').each(function(x, y) {
+						let tempTr = $(y.outerHTML);
+						$(y.innerHTML).each(function(a, b) {
+							if (b.innerText === '1000002') {
+								$('#indexTemp').text(tempTr.find('th').eq(4).text());
+							}
+						});
+					});
 					let tempHtml = $(opportunity[0]).find('#table').html();
 					$('#stockTable').html(tempHtml);
 					$('#stockTable th').each(function() {
@@ -57,9 +41,8 @@
 		<div>
 			<p><span style="color: red">数据仅供参考，不构成投资建议。投资有风险，入市需谨慎</span></p>
 			<a href="./cb.html" class="aLink"><span class="link">查看可转债组合</span></a>
-			<a href="./goodcompany.html" class="aLink"><span class="link">查看白马股组合</span></a>
-			<a href="./cheapstock.html" class="aLink"><span class="link">查看便宜组合</span></a>
-			<!--<a href="./mineRecords.html" class="aLink"><span class="link">我的投资记录</span></a>-->
+			<a href="./bogle.html" class="aLink"><span class="link">行业指数（博格公式）</span></a>
+			<a href="./stockChart.html" class="aLink"><span class="link">股票分析</span></a>
 			<a href="./about.html" class="aLink"><span class="link">关于本软件</span></a>
 		</div>
 		<div class="content">
@@ -75,7 +58,7 @@
 			<div style="text-align: center">
 				<span style="font-size: 50px;"><strong id="indexTemp"></strong>&#8451</span>
 			</div>
-			<div>股票入场时机: <span id="oppTrue" style="font-size: larger; color: red;">不可以入场</span></div>
+			<div>股票入场时机: <span id="oppTrue" style="font-size: larger; color: red;"></span></div>
 			<div class="center">
 				<table id="stockTable" style="border-collapse: collapse; text-align: center;">
 				</table>
