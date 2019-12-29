@@ -1,7 +1,7 @@
 {
   "name": "investment_analysis",
   "productName": "Investment Analysis Tool",
-  "version": "0.5.0",
+  "version": "0.5.9",
   "description": "An assistant investment analysis tool, made by Michael Zhang",
   "main": "src/index.js",
   "scripts": {
