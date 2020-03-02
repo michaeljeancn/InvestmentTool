@@ -4,7 +4,7 @@
 - 该工具是可以辅助您进行投资分析的小工具。
 
 ## 版本
-- 目前版本为：0.5.9
+- 目前版本为：0.6.0
 >- 该版本并不是正式版。
 >- ! 目前仅支持简体中文。
 
@@ -29,6 +29,7 @@
 - [x] 增加了可转债平均市价，以及跳转到富投网的链接
 - [x] 增加了中证全指温度
 - [x] 增加了博格公式辅助分析消费和医药行业指数
+- [x] 整合股票类辅助分析到一个选项卡内，并增加了券商股票，快瞧一瞧
 
 
 ## 下一步
@@ -47,7 +48,7 @@
 - This is the Investment Analysis Tool to help you to improve investment decision.
 
 ## Version
-- Current version is: 0.5.9
+- Current version is: 0.6.0
 >- Not a release ready version yet.
 >- ! Only support Chinese for current version
 
@@ -72,6 +73,7 @@
 - [x] Added CB average price, and the redirect link to [richvest.com](http://www.richvest.com/)
 - [x] Added long term investment temporature of CSI All Share Index
 - [x] Added Bogle analysis feature for consumer and bio-medical indexes
+- [x] Consolidated all stock analysis page into one group, and added new security page, take a look
 
 ## Next Steps
 - [ ] Invest time and number recording
