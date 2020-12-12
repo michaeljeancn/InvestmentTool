@@ -2372,6 +2372,11 @@ electron-installer-snap@^3.1.0:
     which "^1.3.0"
     yargs "^13.2.2"
 
+electron-is-dev@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-0.3.0.tgz#14e6fda5c68e9e4ecbeff9ccf037cbd7c05c5afe"
+  integrity sha1-FOb9pcaOnk7L7/nM8DfL18BcWv4=
+
 electron-osx-sign@^0.4.1:
   version "0.4.14"
   resolved "https://registry.npm.taobao.org/electron-osx-sign/download/electron-osx-sign-0.4.14.tgz#770397c0eb604adfe8a3ec044795db3c123e59d3"
@@ -3285,6 +3290,13 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+github-url-to-object@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/github-url-to-object/-/github-url-to-object-4.0.4.tgz#a9797b7026e18d53b50b07f45b7e169b55fd90ee"
+  integrity sha512-1Ri1pR8XTfzLpbtPz5MlW/amGNdNReuExPsbF9rxLsBfO1GH9RtDBamhJikd0knMWq3RTTQDbTtw0GGvvEAJEA==
+  dependencies:
+    is-url "^1.1.0"
+
 glob-promise@^3.4.0:
   version "3.4.0"
   resolved "https://registry.npm.taobao.org/glob-promise/download/glob-promise-3.4.0.tgz#b6b8f084504216f702dc2ce8c9bc9ac8866fdb20"
@@ -3643,9 +3655,9 @@ inherits@2, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1, inherits@~2.0.3:
   integrity sha1-D6LGT5MpF8NDOg3tVTY6rjdBa3w=
 
 ini@^1.3.4, ini@~1.3.0:
-  version "1.3.5"
-  resolved "https://registry.npm.taobao.org/ini/download/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
-  integrity sha1-7uJfVtscnsYIXgwid4CD9Zar+Sc=
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.8.tgz#a29da425b48806f34767a4efce397269af28432c"
+  integrity sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==
 
 inquirer@^1.0.2:
   version "1.2.3"
@@ -3838,6 +3850,11 @@ is-typedarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/is-typedarray/download/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
   integrity sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
+
+is-url@^1.1.0, is-url@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/is-url/-/is-url-1.2.4.tgz#04a4df46d28c4cff3d73d01ff06abeb318a1aa52"
+  integrity sha512-ITvGim8FhRiYe4IQ5uHSkj7pVaPDrCTkNd3yq3cV7iZAcJdHTUMPMEHcqSOy9xZ9qFenQCvi+2wjH9a1nXqHww==
 
 is-utf8@^0.2.0:
   version "0.2.1"
@@ -4270,6 +4287,11 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.npm.taobao.org/lodash.uniq/download/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
+lodash@4:
+  version "4.17.20"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
+  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+
 lodash@^4.1.0, lodash@^4.13.0, lodash@^4.16.2, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.4, lodash@^4.3.0:
   version "4.17.15"
   resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
@@ -4306,6 +4328,17 @@ loud-rejection@^1.0.0:
   dependencies:
     currently-unhandled "^0.4.1"
     signal-exit "^3.0.0"
+
+lowdb@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/lowdb/-/lowdb-1.0.0.tgz#5243be6b22786ccce30e50c9a33eac36b20c8064"
+  integrity sha512-2+x8esE/Wb9SQ1F9IHaYWfsC9FIecLOPrK4g17FGEayjUWH172H6nwicRovGvSE2CPZouc2MCIqCI7h9d+GftQ==
+  dependencies:
+    graceful-fs "^4.1.3"
+    is-promise "^2.1.0"
+    lodash "4"
+    pify "^3.0.0"
+    steno "^0.4.1"
 
 lru-cache@2:
   version "2.7.3"
@@ -4717,6 +4750,11 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/number-is-nan/download/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
+
+numeral@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/numeral/-/numeral-2.0.6.tgz#4ad080936d443c2561aed9f2197efffe25f4e506"
+  integrity sha1-StCAk21EPCVhrtnyGX7//iX05QY=
 
 "nwmatcher@>= 1.3.7 < 2.0.0":
   version "1.4.4"
@@ -6198,6 +6236,13 @@ sshpk@^1.7.0:
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
 
+steno@^0.4.1:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/steno/-/steno-0.4.4.tgz#071105bdfc286e6615c0403c27e9d7b5dcb855cb"
+  integrity sha1-BxEFvfwobmYVwEA8J+nXtdy4Vcs=
+  dependencies:
+    graceful-fs "^4.1.3"
+
 stream-buffers@~2.2.0:
   version "2.2.0"
   resolved "https://registry.npm.taobao.org/stream-buffers/download/stream-buffers-2.2.0.tgz#91d5f5130d1cef96dcfa7f726945188741d09ee4"
@@ -6744,6 +6789,16 @@ unorm@^1.4.1:
   version "1.6.0"
   resolved "https://registry.npm.taobao.org/unorm/download/unorm-1.6.0.tgz#029b289661fba714f1a9af439eb51d9b16c205af"
   integrity sha1-ApsolmH7pxTxqa9DnrUdmxbCBa8=
+
+update-electron-app@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/update-electron-app/-/update-electron-app-1.5.0.tgz#492cb904db07a0b28dbd83fb52e0fe500bbe3463"
+  integrity sha512-g7noW9JfQ8Hwq6zw9lmZei+R/ikOIBcaZ04TbmIcU5zNfv23HkN80QLLAyiR/47KvfS4sjnh2/wuDq5nh8+0mQ==
+  dependencies:
+    electron-is-dev "^0.3.0"
+    github-url-to-object "^4.0.4"
+    is-url "^1.2.4"
+    ms "^2.1.1"
 
 uri-js@^4.2.2:
   version "4.2.2"
